@@ -1,4 +1,4 @@
-# Password Validation
+# Password Verification
 
 Simple extensible solution for password validation.
 
