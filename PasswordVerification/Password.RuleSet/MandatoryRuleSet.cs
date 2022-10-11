@@ -3,7 +3,7 @@
     public class MandatoryRuleSet : BasePasswordRuleSet
     {
         private readonly List<int>? _mandatoryRuleIds;
-        public MandatoryRuleSet(int ruleSetId, List<int> mandatoryRuleIds)
+        public MandatoryRuleSet(int ruleSetId, List<int>? mandatoryRuleIds)
             : base(ruleSetId,
                   $"All mandatory password rules should be satisfied, mandatory rules are {string.Join(',', mandatoryRuleIds ?? new List<int>())}")
             => _mandatoryRuleIds = mandatoryRuleIds;

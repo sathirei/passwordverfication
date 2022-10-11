@@ -54,7 +54,7 @@ namespace Password.RuleSet.Tests
             var ruleResults = new Dictionary<int, bool> { { 1, false }, { 2, true }, { 3, false }, { 4, false } };
 
             // Act
-            var sut = new MandatoryRuleSet(ruleSetId: 1, mandatoryRuleIds: null);
+            var sut = new MandatoryRuleSet(ruleSetId: 1, mandatoryRuleIds: default);
             var result = sut.IsValid(ruleResults);
 
             // Assert
