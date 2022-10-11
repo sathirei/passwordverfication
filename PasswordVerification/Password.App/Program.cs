@@ -4,6 +4,8 @@ using Password.Rule.Rules;
 using Password.RuleSet;
 
 object _messageLock = new();
+var passLegend = "pass";
+var failedLegend = "failed";
 
 var ruleEngine = new RuleEngine();
 ConfigureRuleEngine(ruleEngine);
@@ -62,9 +64,14 @@ void WriteVerificationResult(object _messageLock, PasswordVerificationResult? re
     WriteColoredMessage(result!.IsVerifiedOkay ? "OK" : "Verification Failed", result.IsVerifiedOkay);
     Console.WriteLine();
     Console.WriteLine("Rules:");
-    result?.RuleResults?.OrderBy(x => x.Id).ToList().ForEach(x => WriteColoredMessage($"{x.Id}. {x.Message}", x.IsPass));
+    result?.RuleResults?.OrderBy(x => x.Id).ToList().ForEach(x => WriteColoredMessage($"{x.Id}. {x.Message} ({GetLegend(x.IsPass)})", x.IsPass));
     Console.WriteLine();
     Console.WriteLine("RuleSets:");
-    result?.RuleSetResults?.OrderBy(x => x.Id).ToList().ForEach(x => WriteColoredMessage($"{x.Id}. {x.Message}", x.IsPass));
+    result?.RuleSetResults?.OrderBy(x => x.Id).ToList().ForEach(x => WriteColoredMessage($"{x.Id}. {x.Message} ({GetLegend(x.IsPass)})", x.IsPass));
     Console.WriteLine();
+}
+
+string GetLegend(bool result)
+{
+    return result ? passLegend : failedLegend;
 }
