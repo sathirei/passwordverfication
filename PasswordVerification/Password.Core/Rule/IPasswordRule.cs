@@ -1,6 +1,8 @@
-﻿namespace Password.Core.Rule
+﻿using System.Collections;
+
+namespace Password.Core.Rule
 {
-    public interface IPasswordRule
+    public interface IPasswordRule: IEqualityComparer
     {
         public int RuleId { get; }
         public int Order { get; }

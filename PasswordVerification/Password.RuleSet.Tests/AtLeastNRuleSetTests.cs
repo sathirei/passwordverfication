@@ -46,5 +46,20 @@ namespace Password.RuleSet.Tests
             // Assert
             result.Should().BeFalse();
         }
+
+
+        [Fact()]
+        public void IsValid_Should_ReturnTrue_WhenAtLeastNRuleIsSetToZeroRules()
+        {
+            // Arrange
+            var ruleResults = new Dictionary<int, bool> { { 1, false }, { 2, false }, { 3, false }, { 4, false } };
+
+            // Act
+            var sut = new AtLeastNRuleSet(ruleSetId: 1, ruleCount: 0);
+            var result = sut.IsValid(ruleResults);
+
+            // Assert
+            result.Should().BeTrue();
+        }
     }
 }

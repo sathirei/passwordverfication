@@ -2,15 +2,21 @@
 {
     public class MandatoryRuleSet : BasePasswordRuleSet
     {
-        private readonly List<int> mandatoryRuleIds;
-        public MandatoryRuleSet(int ruleSetId, List<int> mandatoryRulesId) : base(ruleSetId) => mandatoryRuleIds = mandatoryRulesId;
+        private readonly List<int>? _mandatoryRuleIds;
+        public MandatoryRuleSet(int ruleSetId, List<int> mandatoryRuleIds)
+            : base(ruleSetId,
+                  $"All mandatory password rules should be satisfied, mandatory rules are {string.Join(',', mandatoryRuleIds ?? new List<int>())}")
+            => _mandatoryRuleIds = mandatoryRuleIds;
         public override bool IsValid(IDictionary<int, bool> ruleResults)
         {
-            foreach (var ruleId in mandatoryRuleIds)
+            if (_mandatoryRuleIds != null)
             {
-                if (!ruleResults.TryGetValue(ruleId, out var ruleResult) || !ruleResult)
+                foreach (var ruleId in _mandatoryRuleIds)
                 {
-                    return false;
+                    if (!ruleResults.TryGetValue(ruleId, out var ruleResult) || !ruleResult)
+                    {
+                        return false;
+                    }
                 }
             }
             return true;

@@ -18,5 +18,21 @@ namespace Password.Rule.Rules
         }
 
         public abstract bool IsValid(Core.Password password);
+
+        public new bool Equals(object? x, object? y)
+        {
+            var lhs = (x as IPasswordRule);
+            var rhs = (y as IPasswordRule);
+            if (lhs != null && rhs != null)
+            {
+                return lhs.RuleId == rhs.RuleId;
+            }
+            return false;
+        }
+
+        public int GetHashCode(object obj)
+        {
+            return this.RuleId;
+        }
     }
 }
