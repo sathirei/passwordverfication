@@ -3,7 +3,7 @@ using Password.Engine;
 using Password.Rule.Rules;
 using Password.RuleSet;
 
-object _messageLock = new object();
+object _messageLock = new();
 
 var ruleEngine = new RuleEngine();
 ConfigureRuleEngine(ruleEngine);
@@ -12,7 +12,7 @@ do
 {
     Console.WriteLine("Please enter your password:"); // For simplicity we are printing the password back to the console however we can mask it
     var password = Console.ReadLine();
-    var result = ruleEngine.Evaluate(new Password.Core.Password(password));
+    var result = ruleEngine.Evaluate(new Password.Core.Password(password!));
     Console.WriteLine();
     WriteVerificationResult(_messageLock, result);
 } while (true);
@@ -59,7 +59,7 @@ void WriteColoredMessage(string message, bool result)
 
 void WriteVerificationResult(object _messageLock, PasswordVerificationResult? result)
 {
-    WriteColoredMessage(result.IsVerifiedOkay ? "OK" : "Verification Failed", result.IsVerifiedOkay);
+    WriteColoredMessage(result!.IsVerifiedOkay ? "OK" : "Verification Failed", result.IsVerifiedOkay);
     Console.WriteLine();
     Console.WriteLine("Rules:");
     result?.RuleResults?.OrderBy(x => x.Id).ToList().ForEach(x => WriteColoredMessage($"{x.Id}. {x.Message}", x.IsPass));
