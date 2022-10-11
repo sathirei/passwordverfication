@@ -100,3 +100,4 @@ Sample Input/Output E.g.
 `1. At least 3 password rule(s) should be satisfied. (pass)`
 `2. All mandatory password rules should be satisfied, mandatory rules are 1,2,3,4,5 (pass)`
 
+![PasswordVerification](https://user-images.githubusercontent.com/6255933/195179594-c2da34bf-042b-4dee-980d-daee56007c26.jpg)
