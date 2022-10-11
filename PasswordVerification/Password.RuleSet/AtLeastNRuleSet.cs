@@ -8,7 +8,7 @@
 
         public override bool IsValid(IDictionary<int, bool> ruleResults)
         {
-            return ruleResults.Select(x => x.Value).Count() > _validRuleCount;
+            return ruleResults.Where(x => x.Value).Count() >= _validRuleCount;
         }
     }
 }

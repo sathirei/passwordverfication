@@ -61,5 +61,19 @@ namespace Password.RuleSet.Tests
             // Assert
             result.Should().BeTrue();
         }
+
+        [Fact()]
+        public void IsValid_Should_ReturnFalse_WhenNIsGreaterThanAvailableRules()
+        {
+            // Arrange
+            var ruleResults = new Dictionary<int, bool> { { 1, false }};
+
+            // Act
+            var sut = new AtLeastNRuleSet(ruleSetId: 1, ruleCount: 2);
+            var result = sut.IsValid(ruleResults);
+
+            // Assert
+            result.Should().BeFalse();
+        }
     }
 }
