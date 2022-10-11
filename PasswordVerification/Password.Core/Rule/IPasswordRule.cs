@@ -3,7 +3,7 @@
     public interface IPasswordRule
     {
         public int Order { get; }
-        public int RuleMessage { get; }
+        public string RuleMessage { get; }
 
         public bool IsValid(Password password);
     }

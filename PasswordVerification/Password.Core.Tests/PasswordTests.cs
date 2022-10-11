@@ -15,9 +15,11 @@ namespace Password.Core.Tests
 
             // Act
             var passwd = new Password(value);
+            Func<string, bool> valueEquals = s => s == value;
+            var isValueSet = passwd.Evaluate(valueEquals);
 
             // Assert
-            passwd.Value.Should().Be(value);
+            isValueSet.Should().BeTrue();
         }
     }
 }
