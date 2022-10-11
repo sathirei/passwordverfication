@@ -1,19 +1,12 @@
-﻿using Password.Core.Rule;
-
-namespace Password.Rule.Rules
+﻿namespace Password.Rule.Rules
 {
-    public class OneUpperCaseRule : IPasswordRule
+    public class OneUpperCaseRule : BasePasswordRule
     {
-        public int Order { get; }
+        public OneUpperCaseRule(int ruleId, int order, string ruleMessage)
+            : base(ruleId, order, ruleMessage)
+        { }
 
-        public string RuleMessage { get; }
-        public OneUpperCaseRule(int order, string ruleMessage)
-        {
-            this.Order = order;
-            this.RuleMessage = ruleMessage;
-        }
-
-        public bool IsValid(Core.Password password)
+        public override bool IsValid(Core.Password password)
         {
             return password.Evaluate(s => (s != null) && s.Any(char.IsUpper));
         }

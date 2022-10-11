@@ -6,15 +6,16 @@ namespace Password.Rule.Rules.Tests
     public class MoreThanEightCharactersRuleTests
     {
         [Fact]
-        public void Constructor_Should_SetOrderAndMessage()
+        public void Constructor_Should_SetOrderAndMessageAndRuleId()
         {
             // Arrange
 
             // Act
-            var sut = new MoreThanEightCharactersRule(1, "Password should be more than 8 characters in length.");
+            var sut = new MoreThanEightCharactersRule(1, 0, "Password should be more than 8 characters in length.");
 
             // Assert
-            sut.Order.Should().Be(1);
+            sut.Order.Should().Be(0);
+            sut.RuleId.Should().Be(1);
             sut.RuleMessage.Should().Be("Password should be more than 8 characters in length.");
         }
 
@@ -31,7 +32,7 @@ namespace Password.Rule.Rules.Tests
             var password = new Core.Password(value);
 
             // Act
-            var sut = new MoreThanEightCharactersRule(1, "Password should be more than 8 characters in length.");
+            var sut = new MoreThanEightCharactersRule(1, 0, "Password should be more than 8 characters in length.");
             var result = sut.IsValid(password);
 
             // Assert

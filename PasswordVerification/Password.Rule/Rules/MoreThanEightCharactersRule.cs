@@ -1,20 +1,12 @@
-﻿using Password.Core.Rule;
-
-namespace Password.Rule.Rules
+﻿namespace Password.Rule.Rules
 {
-    public class MoreThanEightCharactersRule : IPasswordRule
+    public class MoreThanEightCharactersRule : BasePasswordRule
     {
-        public int Order { get; }
+        public MoreThanEightCharactersRule(int ruleId, int order, string ruleMessage)
+            :base(ruleId, order, ruleMessage)
+        { }
 
-        public string RuleMessage { get; }
-
-        public MoreThanEightCharactersRule(int order, string ruleMessage)
-        {
-            this.Order = order;
-            this.RuleMessage = ruleMessage;
-        }
-
-        public bool IsValid(Core.Password password)
+        public override bool IsValid(Core.Password password)
         {
             return password.Evaluate(s => s?.Length > 8);
         }

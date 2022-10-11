@@ -2,6 +2,7 @@
 {
     public interface IPasswordRule
     {
+        public int RuleId { get; }
         public int Order { get; }
         public string RuleMessage { get; }
 

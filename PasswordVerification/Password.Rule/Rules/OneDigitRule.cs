@@ -1,19 +1,12 @@
-﻿using Password.Core.Rule;
-
-namespace Password.Rule.Rules
+﻿namespace Password.Rule.Rules
 {
-    public class OneDigitRule : IPasswordRule
+    public class OneDigitRule : BasePasswordRule
     {
-        public int Order { get; }
+        public OneDigitRule(int ruleId, int order, string ruleMessage)
+            : base(ruleId, order, ruleMessage)
+        { }
 
-        public string RuleMessage { get; }
-        public OneDigitRule(int order, string ruleMessage)
-        {
-            this.Order = order;
-            this.RuleMessage = ruleMessage;
-        }
-
-        public bool IsValid(Core.Password password)
+        public override bool IsValid(Core.Password password)
         {
             return password.Evaluate(s => (s != null) && s.Any(char.IsDigit));
         }

@@ -6,15 +6,16 @@ namespace Password.Rule.Rules.Tests
     public class NotNullRuleTests
     {
         [Fact]
-        public void Constructor_Should_SetOrderAndMessage()
+        public void Constructor_Should_SetOrderAndMessageAndRuleId()
         {
             // Arrange
 
             // Act
-            var sut = new NotNullRule(1, "Password should be provided.");
+            var sut = new NotNullRule(1, 0, "Password should be provided.");
 
             // Assert
-            sut.Order.Should().Be(1);
+            sut.Order.Should().Be(0);
+            sut.RuleId.Should().Be(1);
             sut.RuleMessage.Should().Be("Password should be provided.");
         }
 
@@ -31,7 +32,7 @@ namespace Password.Rule.Rules.Tests
             var password = new Core.Password(value);
 
             // Act
-            var sut = new NotNullRule(1, "Password should be provided.");
+            var sut = new NotNullRule(1, 0, "Password should be provided.");
             var result = sut.IsValid(password);
 
             // Assert

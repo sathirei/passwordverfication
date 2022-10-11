@@ -6,15 +6,16 @@ namespace Password.Rule.Rules.Tests
     public class OneLowerCaseRuleests
     {
         [Fact]
-        public void Constructor_Should_SetOrderAndMessage()
+        public void Constructor_Should_SetOrderAndMessageAndRuleId()
         {
             // Arrange
 
             // Act
-            var sut = new OneLowerCaseRule(1, "Password should contain at least one lower case.");
+            var sut = new OneLowerCaseRule(1, 0, "Password should contain at least one lower case.");
 
             // Assert
-            sut.Order.Should().Be(1);
+            sut.Order.Should().Be(0);
+            sut.RuleId.Should().Be(1);
             sut.RuleMessage.Should().Be("Password should contain at least one lower case.");
         }
 
@@ -34,7 +35,7 @@ namespace Password.Rule.Rules.Tests
             var password = new Core.Password(value);
 
             // Act
-            var sut = new OneLowerCaseRule(1, "Password should contain at least one lower case.");
+            var sut = new OneLowerCaseRule(1, 0, "Password should contain at least one lower case.");
             var result = sut.IsValid(password);
 
             // Assert

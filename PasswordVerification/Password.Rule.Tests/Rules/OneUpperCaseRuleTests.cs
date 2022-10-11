@@ -6,15 +6,16 @@ namespace Password.Rule.Rules.Tests
     public class OneUpperCaseRuleests
     {
         [Fact]
-        public void Constructor_Should_SetOrderAndMessage()
+        public void Constructor_Should_SetOrderAndMessageAndRuleId()
         {
             // Arrange
 
             // Act
-            var sut = new OneUpperCaseRule(1, "Password should contain at least one upper case.");
+            var sut = new OneUpperCaseRule(1, 0, "Password should contain at least one upper case.");
 
             // Assert
-            sut.Order.Should().Be(1);
+            sut.Order.Should().Be(0);
+            sut.RuleId.Should().Be(1);
             sut.RuleMessage.Should().Be("Password should contain at least one upper case.");
         }
 
@@ -33,7 +34,7 @@ namespace Password.Rule.Rules.Tests
             var password = new Core.Password(value);
 
             // Act
-            var sut = new OneUpperCaseRule(1, "Password should contain at least one upper case.");
+            var sut = new OneUpperCaseRule(1, 0, "Password should contain at least one upper case.");
             var result = sut.IsValid(password);
 
             // Assert

@@ -6,15 +6,16 @@ namespace Password.Rule.Rules.Tests
     public class OneDigitRuleests
     {
         [Fact]
-        public void Constructor_Should_SetOrderAndMessage()
+        public void Constructor_Should_SetOrderAndMessageAndRuleId()
         {
             // Arrange
 
             // Act
-            var sut = new OneDigitRule(1, "Password should contain at least one digit.");
+            var sut = new OneDigitRule(1, 0, "Password should contain at least one digit.");
 
             // Assert
-            sut.Order.Should().Be(1);
+            sut.Order.Should().Be(0);
+            sut.RuleId.Should().Be(1);
             sut.RuleMessage.Should().Be("Password should contain at least one digit.");
         }
 
@@ -33,7 +34,7 @@ namespace Password.Rule.Rules.Tests
             var password = new Core.Password(value);
 
             // Act
-            var sut = new OneDigitRule(1, "Password should contain at least one digit.");
+            var sut = new OneDigitRule(1, 0, "Password should contain at least one digit.");
             var result = sut.IsValid(password);
 
             // Assert
