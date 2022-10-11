@@ -5,12 +5,12 @@ namespace Password.Core
 {
     public class Password
     {
-        private readonly string Value;
-        public Password(string password) => Value = password;
+        private readonly string value;
+        public Password(string password) => value = password;
 
         public bool Evaluate(Func<string, bool> evaluationFunction)
         {
-            return evaluationFunction(Value);
+            return evaluationFunction(value);
         }
 
     }
