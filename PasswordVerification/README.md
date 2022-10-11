@@ -1,6 +1,6 @@
 # Password Verification
 
-Simple extensible solution for password validation.
+Simple extensible solution for password verification.
 
 Rules:
 1.	- password should be larger than 8 chars
@@ -13,7 +13,7 @@ RuleSet:
 2.	Add feature: password is never OK if item 1.d is not true.
 
 # Solution
-The solution is developed based on .NET 6. It is designed using C#.
+The solution is developed based on .NET 6. It is designed using C#. Solution file is located at 'PasswordVerification/PasswordVerification.sln'.
 
 The projects are divided into Core, Rule, RuleSet, Engine and App(Application).
 
